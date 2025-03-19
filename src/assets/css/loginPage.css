@@ -1,0 +1,150 @@
+/* Background styling */
+.page-container {
+  font-family: "Bruno Ace", sans-serif;
+  background: linear-gradient(135deg, #a8a8a8, #3e3e3e);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/* Container styling */
+.login-container {
+  width: 350px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile icon */
+.profile-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Input fields */
+.input-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.input-container {
+  width: 90%;
+  height: 20px;
+  align-items: center;
+  display: -webkit-flex;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 10px;
+  position: sticky;
+  margin: 2px 2px;
+}
+
+.input-container i {
+  position: absolute;
+  left: 10px;
+  color: white;
+  font-size: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Style for the input fields */
+.input-container input {
+  width: 90%;
+  padding: 12px 12px 12px 40px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  border-radius: 8px;
+  line-height: 1.5; 
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adjust-text{
+    margin-top: 15px;
+}
+
+/* Placeholder styling */
+.input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Remember me & Forgot password */
+.remember-forgot {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #fff;
+}
+
+.remember-forgot a {
+  color: #f8f8f8;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.remember-forgot a:hover {
+  color: #f1c40f;
+}
+
+/* Login button */
+.login-btn {
+  width: 80%;
+  padding: 12px;
+  background: rgba(47, 47, 47, 0.7);
+  color: white;
+  border: none;
+  border-radius: 15px;  
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login-btn-text{
+  font-family: "Bruno Ace", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.login-btn:hover {
+  background: rgba(235, 50, 4, 0.9);
+  border: solid;
+  border-width: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    width: 90%;
+  }
+}
