@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import Header from "../components/Header.jsx";
 import PageTitle from "../components/PageTitle.jsx";
 import BirdCards from "../components/BirdCards.jsx";
 import { getBirds, getBirdImage } from "../apiControllers/birdController.jsx";
@@ -60,7 +59,6 @@ const BirdsList = () => {
 
   return (
     <div className="body">
-      <Header />
       <div className="flex flex-1">
         <main className="add-title-container">
           <PageTitle word="Pigeons" />

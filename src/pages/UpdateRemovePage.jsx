@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import PageTitle from "../components/PageTitle.jsx";
 import { getBirds, getBirdImage } from "../apiControllers/birdController.jsx";
 import UpdateBirdPage from "../components/UpdateRemoveComponent.jsx";
-import Header from "../components/Header.jsx";
 import "../assets/css/textWithShadow.css";
 
 const RemoveDeleteBird = () => {
@@ -45,7 +44,6 @@ const RemoveDeleteBird = () => {
 
   return (
     <div className="body">
-      <Header />
       <div className="flex flex-1">
         <main className="add-title-container">
           <PageTitle word="Updates" />

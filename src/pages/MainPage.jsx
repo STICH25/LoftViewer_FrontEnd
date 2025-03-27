@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import Header from "../components/Header";
+import React from "react";
 import "../index.css";
 import PageTitle from "../components/PageTitle";
 
 const MainPage = () => {
    return (
     <div className="body">
-      <Header/>
       <div className="flex flex-1">
         {/* Main Content */}
         <main className="title-container">

@@ -10,29 +10,35 @@ const LogInPage = ({ onLoginSuccess }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const newUser = "User1";
 
   const onSubmit = async (data) => {
     try {
       const response = await loginUser(data);
       localStorage.setItem("token", response.token);
-      if (onLoginSuccess) {
-        onLoginSuccess(response.user, from);
-      }
+      
+      const newUser = "User1"; // Hardcoded for now, should come from API response
+      localStorage.setItem("user", JSON.stringify({ username: newUser, token: response.token }));
+      
       reset();
-      const redirectPath = location.state?.from?.pathname || "/";
-      navigate(redirectPath, { replace: true });
+      navigate("/", { replace: true });
+      
+      if (onLoginSuccess) {
+        console.log("onLoginSuccess is being called with:", newUser);
+        onLoginSuccess(newUser);
+      }
     } catch (err) {
       setError(err.message);
     }
-  };
+  };  
 
   return (
-    <div className="page-container">      
+    <div className="page-container">
       <div className="login-container">
-      <span className="profile-icon">
-        <i className="fa fa-user fa-3x" style={{color: "whitesmoke"}}></i>
-      </span>
-        <h2 style={{color: "whitesmoke"}}>Sign In</h2>
+        <span className="profile-icon">
+          <i className="fa fa-user fa-3x" style={{ color: "whitesmoke" }}></i>
+        </span>
+        <h2 style={{ color: "whitesmoke" }}>Sign In</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="input-group">
             <label>User Name</label>

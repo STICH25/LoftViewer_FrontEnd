@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import Header from "../components/Header";
 import PageTitle from "../components/PageTitle.jsx";
 import "../assets/css/addPage.css";
 import "../assets/css/textWithShadow.css";
@@ -203,7 +202,6 @@ const Birds = () => {
 
   return (
     <div className="body">
-      <Header />
       <div className="flex flex-1">
         <main className="add-title-container">
           <PageTitle word="Add Pigeon" />

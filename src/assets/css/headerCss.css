@@ -116,6 +116,7 @@ main .button {
 .user-info {
   display: flex; 
   align-items: center;
+  align-items: center;
 }
 
 .user-info .image-container {
@@ -152,6 +153,14 @@ header .image-container img {
   object-fit: cover; 
 }
 
+.sign-in-button{
+  cursor: pointer;
+  color: #bdc3c7;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   header {
@@ -162,9 +171,10 @@ header .image-container img {
   .main {
     order: -1; 
   }
-
+  
   .menu-icon,
   .user-info {
     margin: 5px 0; 
-  }
+  }  
+  
 }

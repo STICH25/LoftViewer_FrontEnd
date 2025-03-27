@@ -1,18 +1,21 @@
-import { useNavigate, Link } from "react-router-dom";
-import "../assets/css/headerCss.css"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../assets/css/headerCss.css";
 
-const LogOut = () => {
+const LogOut = ({ onLogout }) => {
   const navigate = useNavigate();
 
-  const logoutUser = () => {
+  const logoutUser = (event) => {
+    event.preventDefault(); 
     localStorage.removeItem("token");
-    navigate("/");
+    onLogout(); 
+    navigate("/"); 
   };
 
   return (
-    <Link to="/" className="menu-cursor-pointer" onClick={logoutUser}>
+    <a href="/" className="menu-cursor-pointer" onClick={logoutUser}>
       Log out
-    </Link>
+    </a>
   );
 };
 
