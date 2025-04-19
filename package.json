@@ -6,7 +6,7 @@
   "homepage": "https://stich25.github.io/LoftViewer_FrontEnd",
   "scripts": {
     "dev": "vite --port 0",
-    "build": "vite build --base=./",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
