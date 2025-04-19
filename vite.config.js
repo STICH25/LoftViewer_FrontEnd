@@ -8,5 +8,9 @@ export default defineConfig({
   server: {
     port: 3025,
     strictPort: true,
-  },
+  },  
+  base: "LoftViewer_FrontEnd", // Ensure this matches your repository name
+  build: {
+    outDir: "dist", // Default output folder
+  }
 });
