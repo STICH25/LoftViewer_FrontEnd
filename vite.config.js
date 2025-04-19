@@ -8,7 +8,9 @@ export default defineConfig({
     strictPort: true,
   },
   esbuild: {
-    loader: "jsx"
+    loader: {
+       ".js": "jsx"
+    },
   },
   resolve: {
     extensions: [".js", ".jsx"],
