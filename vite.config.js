@@ -26,5 +26,13 @@ export default defineConfig({
   base: './',
   build: {    
     outDir: "dist",
+    rollupOptions: {
+      input: "index.html", // Explicitly set entry file
+      output: {
+        entryFileNames: "assets/[name]-[hash].js", // Correct relative path
+        chunkFileNames: "assets/[name]-[hash].js", // Correct relative path
+        assetFileNames: "assets/[name]-[hash].[ext]", // Correct relative path for styles/icons
+      },
+    },
   },
 });
