@@ -7,6 +7,9 @@ export default defineConfig({
     port: 3025,
     strictPort: true,
   },
+  esbuild: {
+    loader: "jsx"
+  },
   resolve: {
     extensions: [".js", ".jsx"],
   },
