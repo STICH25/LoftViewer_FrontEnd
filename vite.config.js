@@ -24,12 +24,4 @@ export default defineConfig({
     extensions: [".js", ".jsx"],
   },  
   base: './',
-  build: {    
-    outDir: "dist",
-    rollupOptions: {
-      output: {
-        entryFileNames: "index.js", // Ensures .js files are correctly named
-      },
-    },
-  },
 });
