@@ -7,9 +7,11 @@ export default defineConfig({
     port: 3025,
     strictPort: true,
   },
-  esbuild: {
-    loader: {
-       ".js": "jsx"
+  optimizeDeps: {
+    esbuildOptions: {
+      loader: {
+        ".js": "jsx", // Map .js files to JSX
+      },
     },
   },
   resolve: {
