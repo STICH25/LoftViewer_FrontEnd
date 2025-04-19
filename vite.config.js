@@ -6,6 +6,12 @@ export default defineConfig({
   server: {
     port: 3025,
     strictPort: true,
+    mimeTypes: {
+      "application/javascript": ["js", "jsx"], // Ensures files are served with the right MIME type
+    },
+    headers: {
+      "Content-Type": "application/javascript", // Explicitly define the MIME type
+    },
   },
   optimizeDeps: {
     esbuildOptions: {
@@ -16,9 +22,14 @@ export default defineConfig({
   },
   resolve: {
     extensions: [".js", ".jsx"],
-  },
+  },  
   base: './',
   build: {    
     outDir: "dist",
+    rollupOptions: {
+      output: {
+        entryFileNames: "index.js", // Ensures .js files are correctly named
+      },
+    },
   },
 });
