@@ -9,6 +9,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Grants GitHub Actions permission to push changes
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
