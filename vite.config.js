@@ -24,4 +24,7 @@ export default defineConfig({
     extensions: [".js", ".jsx"],
   },  
   base: './',
+  build: {    
+    outDir: "dist",
+  },
 });
