@@ -1,14 +1,16 @@
 {
+  "homepage": "https://stich25.github.io/LoftViewer_FrontEnd",
   "name": "loft-viewer",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://stich25.github.io/LoftViewer_FrontEnd",
-  "scripts": {
+    "scripts": {
     "dev": "vite --port 0",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
@@ -30,6 +32,7 @@
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
+    "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "postcss": "^8.5.3",
     "rollup-plugin-copy": "^3.5.0",
