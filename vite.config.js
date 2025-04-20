@@ -32,8 +32,9 @@ export default defineConfig({
   resolve: {
     extensions: [".js", ".jsx"],
   },  
-  base: './',
-  build: {    
+  base: "/LOFT-VIEWER/",
+  build: {
+    outDir: "dist",    
     input: "index.html", // Explicitly set entry file
     output: {
       entryFileNames: "assets/[name]-[hash].js", // Correct relative path
