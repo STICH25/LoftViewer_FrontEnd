@@ -2,7 +2,8 @@
   "name": "loft-viewer",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
+  "type": "module", 
+  "homepage": "https://stich25.github.io/LoftViewer_FrontEnd",
   "scripts": {
     "dev": "vite --port 0",
     "build": "vite build",
