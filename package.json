@@ -8,9 +8,7 @@
     "dev": "vite --port 0",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "preview": "vite preview"    
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
