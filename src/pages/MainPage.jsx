@@ -13,7 +13,7 @@ const MainPage = () => {
           <div className="space-y-6">
             <div className="center-image-container">
               <div className="center-image-container img">
-                <img src="src/assets/images/myLoft.jpg" />
+                <img src="../../assets/images/myLoft.jpg" />
               </div>
             </div>
             <div className="text-container-title">Loft History</div>
@@ -28,13 +28,13 @@ const MainPage = () => {
               <h2 className="text-container-title">Champion Birds</h2>
               <div className="image-row-container">
                 <div className="card-image-container img">
-                  <img src="src/assets/images/tempImage.jpg" />
+                  <img src="../../assets/images/tempImage.jpg" />
                 </div>
                 <div className="card-image-container img">
-                  <img src="src/assets/images/tempImage.jpg" />
+                  <img src="../../assets/images/tempImage.jpg" />
                 </div>
                 <div className="card-image-container img">
-                  <img src="src/assets/images/tempImage.jpg" />
+                  <img src="../../assets/images/tempImage.jpg" />
                 </div>
               </div>
             </div>

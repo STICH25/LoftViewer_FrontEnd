@@ -48,10 +48,10 @@ const BirdsList = () => {
     for (const bird of birds) {
       try {
         const imageUrl = await getBirdImage(bird.id);
-        images[bird.id] = imageUrl || "/assets/tempImage.jpg"; // Fallback image
+        images[bird.id] = imageUrl || "../assets/tempImage.jpg"; // Fallback image
       } catch (error) {
         console.error(`Error fetching image for bird ${bird.id}:`, error);
-        images[bird.id] = "/assets/tempImage.jpg"; // Use fallback
+        images[bird.id] = "../assets/tempImage.jpg"; // Use fallback
       }
     }
     setBirdImages(images);

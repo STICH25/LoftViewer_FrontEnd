@@ -10,12 +10,12 @@ const BirdCards = ({ birds, birdImages }) => {
         <div className="card" key={bird.id || index}>
           <div className="card-head">
             <img
-              src="../src/assets/images/tempImage.jpg"
+              src="../assets/images/tempImage.jpg"
               className="card-logo"
               alt="Bird Logo"
             />
             <img
-              src={birdImages[bird.id] || "/assets/tempImage.jpg"}
+              src={birdImages[bird.id] || "../assets/tempImage.jpg"}
               className="product-img"
               alt="Bird Image"
               width="160"

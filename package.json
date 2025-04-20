@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 0",
-    "build": "vite build --base=./",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -31,6 +31,7 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "postcss": "^8.5.3",
+    "rollup-plugin-copy": "^3.5.0",
     "tailwindcss": "^4.0.9",
     "vite": "^6.1.0"
   }

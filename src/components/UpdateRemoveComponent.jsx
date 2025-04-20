@@ -125,7 +125,7 @@ const UpdateBirdPage = ({
             <div className="card">
               <div className="card-head">
                 <img
-                  src="../src/assets/images/tempImage.jpg"
+                  src="../assets/images/tempImage.jpg"
                   className="card-logo"
                   alt="Bird Logo"
                 />
@@ -140,7 +140,7 @@ const UpdateBirdPage = ({
                       src={
                         previewImage ||
                         birdImages[selectedBird.id] ||
-                        "/assets/tempImage.jpg"
+                        "../assets/tempImage.jpg"
                       }
                       className="product-img"
                       style={{

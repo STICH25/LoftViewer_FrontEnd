@@ -61,10 +61,10 @@ const Birds = () => {
     for (const bird of birds) {
       try {
         const imageUrl = await getBirdImage(bird.id);
-        images[bird.id] = imageUrl || "./src/assets/images/tempImage.jpg"; // Fallback image
+        images[bird.id] = imageUrl || "../assets/images/tempImage.jpg"; // Fallback image
       } catch (error) {
         console.error(`Error fetching image for bird ${bird.id}:`, error);
-        images[bird.id] = "./src/assets/images/tempImage.jpg"; // Use fallback
+        images[bird.id] = "../assets/images/tempImage.jpg"; // Use fallback
       }
     }
     setBirdImages(images);
@@ -285,7 +285,7 @@ const Birds = () => {
                 }}
               >
                 <img
-                  src={uploadedImage || "src/assets/images/uploadPreview.jpg"}
+                  src={uploadedImage || "../assets/images/uploadPreview.jpg"}
                   alt="Preview"                  
                 />
                 <input
