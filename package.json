@@ -2,7 +2,7 @@
   "name": "loft-viewer",
   "private": true,
   "version": "1.0.0",
-  "type": "module", 
+  "type": "module",
   "homepage": "https://stich25.github.io/LoftViewer_FrontEnd",
   "scripts": {
     "dev": "vite --port 0",
@@ -34,6 +34,6 @@
     "postcss": "^8.5.3",
     "rollup-plugin-copy": "^3.5.0",
     "tailwindcss": "^4.0.9",
-    "vite": "^6.1.0"
+    "vite": "^6.3.2"
   }
 }
