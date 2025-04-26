@@ -34,7 +34,7 @@ export default defineConfig({
   },  
   base: "/LoftViewer_FrontEnd/",
   build: {
-    outDir: "dist",    
+    outDir: "doc",    
     input: "index.html", // Explicitly set entry file
     output: {
       entryFileNames: "assets/[name]-[hash].js", // Correct relative path
