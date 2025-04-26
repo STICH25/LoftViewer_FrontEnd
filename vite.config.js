@@ -32,7 +32,7 @@ export default defineConfig({
   resolve: {
     extensions: [".js", ".jsx"],
   },  
-  base: "/root/",
+  base: "/",
   build: {
     outDir: "dist",    
     input: "index.html", // Explicitly set entry file
