@@ -7,6 +7,7 @@
     "scripts": {
     "dev": "vite --port 0",
     "build": "vite build",
+    "deploy": "main -d dist",
     "lint": "eslint .",
     "preview": "vite preview"    
   },
