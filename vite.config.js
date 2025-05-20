@@ -2,44 +2,49 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import copy from "rollup-plugin-copy";
 
+// Replace 'my-react-app' with your actual GitHub repo name
+const repoName = "LoftViewer_FrontEnd";
+
 export default defineConfig({
+  base: `/${repoName}/`, // ✅ Required for GitHub Pages
   plugins: [
     react(),
     copy({
       targets: [
-        { src: "src/assets", dest: "public/" } // Copies assets folder
+        { src: "src/assets", dest: "public/" }
       ],
-      verbose: true, // Logs copied files
+      verbose: true,
     }),
   ],
   server: {
     port: 3025,
     strictPort: true,
     mimeTypes: {
-      "application/javascript": ["js", "jsx"], // Ensures files are served with the right MIME type
+      "application/javascript": ["js", "jsx"],
     },
     headers: {
-      "Content-Type": "application/javascript", // Explicitly define the MIME type
+      "Content-Type": "application/javascript",
     },
   },
   optimizeDeps: {
     esbuildOptions: {
       loader: {
-        ".js": "jsx", // Map .js files to JSX
+        ".js": "jsx",
       },
     },
   },
   resolve: {
     extensions: [".js", ".jsx"],
-  },  
-  base: "/LoftViewer_FrontEnd/",
+  },
   build: {
-    outDir: "dist",    
-    input: "index.html", // Explicitly set entry file
-    output: {
-      entryFileNames: "assets/[name]-[hash].js", // Correct relative path
-      chunkFileNames: "assets/[name]-[hash].js", // Correct relative path
-      assetFileNames: "assets/[name]-[hash].[ext]", // Correct relative path for styles/icons
+    outDir: "dist",
+    rollupOptions: {
+      input: "index.html",
+      output: {
+        entryFileNames: "assets/[name]-[hash].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash].[ext]",
+      },
     },
   },
 });
