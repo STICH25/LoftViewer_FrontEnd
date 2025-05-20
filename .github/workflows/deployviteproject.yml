@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write  # Grants GitHub Actions permission to push changes
+      contents: write  # Allows pushing to gh-pages
 
     steps:
       - name: Checkout code
@@ -31,4 +31,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist
+          publish_dir: ./dist
+          cname: www.reyfamilyloft.com  # Add this line for your custom domain
