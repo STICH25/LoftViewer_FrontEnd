@@ -27,9 +27,20 @@ jobs:
       - name: Build the project
         run: npm run build
 
+      - name: Push built files to gh-pages
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git checkout --orphan gh-pages
+          git rm -rf .
+          cp -r dist/* .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push origin gh-pages --force
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          cname: www.reyfamilyloft.com  # Add this line for your custom domain
+          cname: www.reyfamilyloft.com  # Custom domain setup
