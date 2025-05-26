@@ -8,7 +8,7 @@ export default defineConfig({
     extensions: [".js", ".jsx"],
   },
   build: {
-    outDir: "dist",
+    outDir: "public",
     rollupOptions: {
       input: "index.html",
       output: {
