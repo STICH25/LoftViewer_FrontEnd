@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/", // ✅ This is correct for a custom domain
+  base: "/", // Correct for custom domains or root-level deployment
   plugins: [react()],
   resolve: {
     extensions: [".js", ".jsx"],
@@ -17,5 +17,9 @@ export default defineConfig({
         assetFileNames: "assets/[name]-[hash].[ext]",
       },
     },
+  },
+  server: {
+    host: true,
+    port: process.env.PORT ? Number(process.env.PORT) : 8080, // 👈 Railway needs this
   },
 });
