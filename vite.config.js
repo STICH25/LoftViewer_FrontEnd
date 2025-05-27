@@ -21,6 +21,6 @@ export default defineConfig({
   },
   server: {
     host: true,
-    port: process.env.PORT ? Number(process.env.PORT) : 5051, //Set port for railway
+    port: process.env.PORT ? Number(process.env.PORT) : 5000, //Set port for railway
   },
 });
