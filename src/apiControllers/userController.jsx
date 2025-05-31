@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_URL = "https://localhost:5001/api/auth";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const loginUser = async (credentials) => {
   try {
-    const response = await axios.post(`${API_URL}/login`, credentials);
+    const response = await axios.post(`${API_URL}/api/auth/login`, credentials);
     
     // ✅ Store the token in localStorage
     localStorage.setItem("token", response.data.token);

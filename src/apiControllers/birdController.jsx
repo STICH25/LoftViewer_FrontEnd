@@ -2,12 +2,12 @@ import axios from "axios";
 import { getAuthHeader } from "../utils/auth";
 import { data } from "react-router-dom";
 
-const API_URL = "https://localhost:5001/api/birds";
+const API_URL = import.meta.env.VITE_API_URL;;
 
 // ✅ Fetch all birds from the database
 export const getBirds = async () => {
   try {
-    const response = await axios.get(`${API_URL}`);
+    const response = await axios.get(`${API_URL}/api/birds`);
     //console.log(response.data);
     return response.data;
   } catch (error) {
