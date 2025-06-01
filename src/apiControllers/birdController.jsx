@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuthHeader } from "../utils/auth";
 import { data } from "react-router-dom";
 
-const API_URL = import.meta.env.VITE_API_URL;;
+const API_URL = import.meta.env.VITE_API_URL;
 
 // ✅ Fetch all birds from the database
 export const getBirds = async () => {
@@ -86,7 +86,7 @@ export const uploadImage = async (formData) => {
 // ✅ Get the image for each bird
 export const getBirdImage = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/${id}/image`, {
+    const response = await axios.get(`${API_URL}/api/${id}/image`, {
       responseType: "blob", // Ensure we get binary data
     });
     //console.log(response);
