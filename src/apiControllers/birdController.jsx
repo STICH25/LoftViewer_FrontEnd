@@ -86,7 +86,7 @@ export const uploadImage = async (formData) => {
 // ✅ Get the image for each bird
 export const getBirdImage = async (id) => {
   try {
-    const response = await axios.get(`${API_URL}/api/${id}/image`, {
+    const response = await axios.get(`${API_URL}/api/birds/${id}/image`, {
       responseType: "blob", // Ensure we get binary data
     });
     //console.log(response);
