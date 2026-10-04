@@ -124,8 +124,19 @@
   margin-left: 5px;
 }
 
+/* The list card grows with its details instead of clipping them; the badge sits at the bottom. */
+.bird-card-body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 255px;
+  padding-bottom: 20px;
+  box-sizing: border-box;
+}
+
 .product-caption {
   display: list-item;
+  overflow-wrap: anywhere; /* long ring numbers wrap instead of overflowing the card */
   align-content: space-around;
   margin: 5px;
   font-size: 14px;
@@ -220,20 +231,23 @@
   margin-top: -5px;
 }
 
+/* In normal flow (not absolutely positioned) so longer details push it down inside the card. */
 .champion-label {
-  position: absolute;
+  align-self: center;
+  margin-top: auto;
   background: #11e95b;
   padding: 7px 20px;
   text-align: center;
-  transform: translateX(-50%);
-  display: inline-block;
+  white-space: nowrap;
   font-size: 16px;
   font-weight: 200;
   color: #020000;
   border-radius: 7px;
-  margin-top: 80px;
-  margin-left: -5px;
   box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+}
+
+.bird-card-body .product-rating {
+  margin-bottom: 20px;
 }
 
 .product-price b {

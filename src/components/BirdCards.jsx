@@ -22,7 +22,7 @@ const BirdCards = ({ birds, birdImages }) => {
               <h2>{bird.birdName}</h2>
             </div>
           </div>
-          <div className="card-body">
+          <div className="card-body bird-card-body">
             <span className="product-details h3"><h3>Pigeon Details:</h3></span>
             <div className="product-rating">
               <span className="product-caption">Number: {bird.birdNumber}</span>
