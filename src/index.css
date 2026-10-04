@@ -175,11 +175,12 @@ main h1 {
 }
 
 .center-image-container img {
-  max-width: 80%;
-  max-height: 80%;
+  max-width: 64%;
+  max-height: 64%;
   object-fit: contain;
   border-radius: 15px;
-  box-shadow: -18px -15px 5px -10px rgba(69, 74, 79, 0.388);
+  /* Down-left, matching the bird cards and the title: the page is lit from the top right. */
+  box-shadow: -10px 12px 14px -2px rgba(0, 0, 0, 0.45);
 }
 
 .scrollable-container {
