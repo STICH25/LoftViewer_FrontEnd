@@ -12,7 +12,11 @@ const MainPage = () => {
           <div className="space-y-6">
             <div className="center-image-container">
               <div className="center-image-container img">
-                <img src="../../assets/images/myLoft.jpg" />
+                <img
+                  src="/assets/images/la-patrona-hero.webp"
+                  alt="La Patrona, 2829 THP 2012: 3rd place diplomas from the Florida Federation and Tampa Bay Concourse, Old Bird series 2013"
+                />
+
               </div>
             </div>
             <div className="text-container-title">Loft History</div>
