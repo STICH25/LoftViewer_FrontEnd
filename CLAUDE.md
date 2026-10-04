@@ -78,7 +78,12 @@ tooling moved. Remove entries from this list as they are fixed.
    ticked, so it cannot be unticked. Delete does not refresh the list. The delete button reads
    "Deleting Bird".
 9. **Update form can send the string "undefined"** when a field is null (`FormData.append` stringifies it).
-10. **Broken image paths.** `card-logo` uses relative `../assets/images/tempImage.jpg`, and the update
-    page falls back to `../assets/tempImage.jpg`, which does not exist.
+10. **Fragile image paths.** `card-logo` and several pages use relative paths such as
+    `../assets/images/tempImage.jpg`, which only resolve because every route is one level deep. The
+    update page's fallback `../assets/tempImage.jpg` does not exist (rarely hit: the API serves a placeholder).
 11. **"Contact Info" links to `/other`**, which has no route. There is no 404 route.
 12. **Session expiry uses `alert()`** from inside `getAuthHeader` and the idle timer.
+13. **Idle timer runs for logged-out visitors.** `useIdleTimeout` is always active, so anyone who leaves the
+    site open for an hour gets "Session expired" even if they never signed in.
+14. **Update page photo overlaps the bird name.** The card image is `position: absolute` in
+    `UpdateRemoveComponent`.
