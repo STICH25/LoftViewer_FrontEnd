@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import LogOut from "../components/LogOut";
@@ -6,8 +5,6 @@ import "../assets/css/headerCss.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 const Header = ({ isLoggedIn, userName, onLogout }) => {
-  console.log("Header props: isLoggedIn =", isLoggedIn, ", userName =", userName);
-
   return (
     <header className="header">
       <div className="menu-container">

@@ -1,26 +1,19 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
 
 export default defineConfig({
-  base: "/",
   plugins: [react()],
-  resolve: {
-    extensions: [".js", ".jsx"],
+  server: {
+    // The API's Development CORS policy allows exactly this origin.
+    port: 5173,
+    strictPort: true,
   },
   build: {
     outDir: "dist",
-    rollupOptions: {
-      input: path.resolve(__dirname, "index.html"), // points to your entry HTML
-      output: {
-        entryFileNames: "assets/[name]-[hash].js",
-        chunkFileNames: "assets/[name]-[hash].js",
-        assetFileNames: "assets/[name]-[hash].[ext]",
-      },
-    },
+    sourcemap: true,
   },
-  server: {
-    host: true,
-    port: process.env.PORT ? Number(process.env.PORT) : 5000, //Set port for railway
+  test: {
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.js",
   },
 });

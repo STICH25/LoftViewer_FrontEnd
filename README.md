@@ -1,11 +1,32 @@
-# React + Vite
+# LoftViewer Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Web front end for [Rey Family Loft](https://www.reyfamilyloft.com): browse the loft's pigeons and,
+for admins, add, update and remove birds. React 19 + Vite.
 
-Currently, two official plugins are available:
+API: [LoftViewer_API](https://github.com/STICH25/LoftViewer_API).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run locally
 
+Requires Node 20.19+ (see `.nvmrc`).
 
-[![Deploy Vite Project to GitHub Pages](https://github.com/STICH25/LoftViewer_FrontEnd/actions/workflows/deployviteproject.yml/badge.svg?branch=gh-pages&event=deployment)](https://github.com/STICH25/LoftViewer_FrontEnd/actions/workflows/deployviteproject.yml)
+```bash
+npm install
+npm run dev
+```
+
+The app expects the API at `VITE_API_URL` (`http://localhost:5053` in development, see `.env.example`).
+
+## Scripts
+
+| Script | Purpose |
+|---|---|
+| `npm run dev` | Dev server on http://localhost:5173 |
+| `npm run lint` | ESLint |
+| `npm test` | Unit tests (Vitest) |
+| `npm run build` | Production build to `dist/` |
+| `npm start` | Serve `dist/` with SPA fallback (Railway) |
+
+## Deploy
+
+Railway builds with `npm run build` and starts with `npm start` (`railway.json`).
+`VITE_API_URL` for production comes from `.env.production`.

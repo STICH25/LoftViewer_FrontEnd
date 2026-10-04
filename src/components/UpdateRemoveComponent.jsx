@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { UpdateBird, deleteBird } from "../apiControllers/birdController.jsx";
+import { updateBird, deleteBird } from "../api/birds";
 import "../assets/css/UpdatePage.css";
 import "../assets/css/birdCard.css";
 import "../assets/css/addPage.css";
 
 const UpdateBirdPage = ({
   birds,
-  birdImages = { birdImages },
+  birdImages = {},
   onUpdateSuccess,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -71,7 +71,7 @@ const UpdateBirdPage = ({
         formData.append("image", selectedImage);
       }
       // Send the request
-      await UpdateBird(selectedBird.id, formData);
+      await updateBird(selectedBird.id, formData);
       setSearchTerm("");
       setSelectedBird(null);
       setPreviewImage(null);
@@ -89,12 +89,10 @@ const UpdateBirdPage = ({
     setLoading(true);
     setError(null);
     try {
-      console.log(`User Id: ${selectedBird.id}`);
       await deleteBird(selectedBird.id);
       setSearchTerm("");
       setSelectedBird(null);
       setPreviewImage(null);
-      console.log("The Bird was successfully deleted");
     } catch (error) {
       console.error("Error deleting bird:", error);
       setError("Failed to delete bird.");
