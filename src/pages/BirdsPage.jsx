@@ -1,16 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import PageTitle from "../components/PageTitle.jsx";
+import { addBird } from "../api/birds";
 import "../assets/css/addPage.css";
 import "../assets/css/textWithShadow.css";
-import {
-  getBirds,
-  addBird,
-  deleteBird,
-  getBirdImage,
-} from "../apiControllers/birdController.jsx";
 
 const Birds = () => {
-  const [birds, setBirds] = useState([]);
   const [loading, setLoading] = useState(false);
   const [newBird, setNewBird] = useState({
     birdName: "",
@@ -24,12 +18,6 @@ const Birds = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [uploadedImage, setUploadedImage] = useState(null);
-  const [birdImages, setBirdImages] = useState({});
-
-  // Fetch birds on component mount
-  useEffect(() => {
-    fetchBirds();
-  }, []);
 
   useEffect(() => {
     if (successMessage || errorMessage) {
@@ -42,44 +30,11 @@ const Birds = () => {
     }
   }, [successMessage, errorMessage]);
 
-  // Fetch all birds from API
-  const fetchBirds = async () => {
-    setLoading(true);
-    try {
-      const data = await getBirds();
-      setBirds(data);
-      fetchAllBirdImages(data);
-    } catch (error) {
-      console.error("Error fetching birds:", error);
-    }
-    setLoading(false);
-  };
-
-  // Fetch images for all birds
-  const fetchAllBirdImages = async (birds) => {
-    const images = {};
-    for (const bird of birds) {
-      try {
-        const imageUrl = await getBirdImage(bird.id);
-        images[bird.id] = imageUrl || "../assets/images/tempImage.jpg"; // Fallback image
-      } catch (error) {
-        console.error(`Error fetching image for bird ${bird.id}:`, error);
-        images[bird.id] = "../assets/images/tempImage.jpg"; // Use fallback
-      }
-    }
-    setBirdImages(images);
-  };
-
   const isFormEmpty = () => {
     return !newBird.birdName.trim() || !newBird.birdNumber.trim();
   };
 
-  const ifNoImage = () => {
-    return (
-      uploadedImage != null ||
-      (fileInputRef.current && fileInputRef.current.value)
-    );
-  };
+  const hasImage = uploadedImage != null;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -189,8 +144,6 @@ const Birds = () => {
       setSuccessMessage("Bird added successfully!");
       setErrorMessage("");
 
-      // Refresh the list after adding
-      await fetchBirds();
     } catch (error) {
       console.error("Error adding bird:", error);
       setErrorMessage("Failed to add bird. Please try again.");
@@ -316,7 +269,7 @@ const Birds = () => {
                   className="add-button"
                   type="button"
                   onClick={clearImage}
-                  disabled={!ifNoImage()}
+                  disabled={!hasImage}
                 >
                   Clear Image
                 </button>

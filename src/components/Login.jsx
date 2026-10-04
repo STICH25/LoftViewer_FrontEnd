@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { loginUser } from "../apiControllers/userController.jsx";
-import { useNavigate, useLocation } from "react-router-dom";
+import { loginUser } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 import "../assets/css/loginPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -9,13 +9,10 @@ const LogInPage = ({ onLoginSuccess }) => {
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
-  const newUser = "User1";
 
   const onSubmit = async (data) => {
     try {
       const response = await loginUser(data);
-      localStorage.setItem("token", response.token);
       
       const newUser = "User1"; // Hardcoded for now, should come from API response
       localStorage.setItem("user", JSON.stringify({ username: newUser, token: response.token }));
@@ -24,7 +21,6 @@ const LogInPage = ({ onLoginSuccess }) => {
       navigate("/", { replace: true });
       
       if (onLoginSuccess) {
-        console.log("onLoginSuccess is being called with:", newUser);
         onLoginSuccess(newUser);
       }
     } catch (err) {

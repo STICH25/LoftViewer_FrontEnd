@@ -1,13 +1,13 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/css/headerCss.css";
+import { clearToken } from "../auth/token";
 
 const LogOut = ({ onLogout }) => {
   const navigate = useNavigate();
 
   const logoutUser = (event) => {
     event.preventDefault(); 
-    localStorage.removeItem("token");
+    clearToken();
     onLogout(); 
     navigate("/"); 
   };

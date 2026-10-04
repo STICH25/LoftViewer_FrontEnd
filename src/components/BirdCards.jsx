@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import "../assets/css/birdCard.css";
-import { deleteBird } from "../apiControllers/birdController";
 
 const BirdCards = ({ birds, birdImages }) => {
   
