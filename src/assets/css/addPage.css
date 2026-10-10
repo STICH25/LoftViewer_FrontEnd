@@ -1,13 +1,17 @@
 /* General Styling */
 .add-title-container {
-  width: 100vw;
-  height: 100vh;
+  /* min-height, not height: the page grows with its content. 100vw/100vh broke on phones
+     (scrollbar width, and Safari's collapsing address bar). */
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
   align-items: center; /* Centers vertically */
   justify-content: center; /* Centers horizontally */
 }
 
 .form-container {
   display: flex;
+  flex-wrap: wrap; /* the preview drops below the form on narrow screens */
   align-items: flex-start; /* Aligns items at the top */
   justify-content: space-evenly;
   gap: 20px;
@@ -18,7 +22,8 @@
 }
 
 .container {
-  width: 500px;
+  box-sizing: border-box;
+  width: min(500px, calc(100% - 20px));
   margin: 10px;
   padding: 20px;
   border: 1px solid #bebebe;
@@ -129,6 +134,7 @@ input[type="file"] {
   cursor: pointer;
   margin-top: 10px;
   text-decoration: none;
+  white-space: nowrap; /* "Add Bird" / "Reset Form" stay on one line, even on a 320px phone */
 }
 
 .add-button:hover {
@@ -137,6 +143,7 @@ input[type="file"] {
 
 .add-button-container {
   display: flex;
+  flex-wrap: wrap; /* drop to a second row instead of squeezing the labels */
   justify-content: space-between;
   gap: 10px;
   align-items: center;
@@ -159,8 +166,9 @@ button:disabled {
 }
 
 .image-preview-container {
-  width: 300px;
-  height: 300px;
+  box-sizing: border-box;
+  width: min(300px, calc(100vw - 40px));
+  aspect-ratio: 1;
   border: 2px solid #ccc;
   border-radius: 10px;
   margin-top: 10px;
@@ -189,4 +197,43 @@ button:disabled {
   gap: 10px !important; 
   margin-left: 25px;
   position: absolute;
+}
+
+/* Phones and tablets */
+@media (max-width: 768px) {
+  .form-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-section {
+    align-items: center;
+  }
+}
+
+/* Touch screens: iOS Safari zooms the page when a field under 16px gets focus, and small buttons
+   are hard to hit. Make fields 16px and buttons at least 44px tall. */
+@media (pointer: coarse) {
+  input[type="text"],
+  input[type="password"],
+  input[type="search"] {
+    font-size: 16px;
+  }
+
+  .add-button,
+  .search-button,
+  .submit-btn,
+  .delete-btn {
+    min-height: 44px;
+  }
+
+  /* The checkbox is small, but its label is part of the same tap target: make the row 44px. */
+  .champion-label-check {
+    min-height: 44px;
+  }
+
+  .champion-label-check input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+  }
 }
