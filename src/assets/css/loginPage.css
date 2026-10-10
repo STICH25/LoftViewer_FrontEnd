@@ -48,50 +48,72 @@
   margin-bottom: 5px;
 }
 
+/* The rounded pill. The input fills it exactly, so nothing it paints can spill outside. */
 .input-container {
-  width: 90%;
-  height: 20px;
+  position: relative;
+  display: flex;
   align-items: center;
-  display: -webkit-flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  padding: 0 14px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
-  padding: 10px;
-  position: sticky;
-  margin: 2px 2px;
+  overflow: hidden;
 }
 
 .input-container i {
   position: absolute;
-  left: 10px;
+  left: 14px;
   color: white;
   font-size: 16px;
   top: 50%;
   transform: translateY(-50%);
+  pointer-events: none;
 }
 
-/* Style for the input fields */
-.input-container input {
-  width: 90%;
-  padding: 12px 12px 12px 40px;
+.login-container .input-container input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 100%;
+  /* addPage.css styles every input[type="text"] globally with `margin-bottom: 15px !important`. */
+  margin: 0 !important;
+  padding: 0 0 0 28px;
   border: none;
   background: transparent;
   color: white;
   font-size: 16px;
   outline: none;
-  border-radius: 8px;
-  line-height: 1.5; 
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.adjust-text{
-    margin-top: 15px;
+/*
+ * Browsers paint saved-password autofill with their own light background and dark text.
+ * Keep the field transparent and the text white: the delayed background transition stops the
+ * autofill colour from ever being applied, and -webkit-text-fill-color overrides the text colour.
+ */
+.login-container .input-container input:-webkit-autofill,
+.login-container .input-container input:-webkit-autofill:hover,
+.login-container .input-container input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+/* Kept separate: one unsupported pseudo-class in a selector list drops the whole rule. */
+.login-container .input-container input:autofill {
+  -webkit-text-fill-color: #fff;
+  caret-color: #fff;
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+/* Keyboard users still need to see which field has focus. */
+.input-container:focus-within {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.6);
 }
 
 /* Placeholder styling */
-.input-container input::placeholder {
+.login-container .input-container input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
 
