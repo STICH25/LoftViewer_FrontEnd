@@ -40,5 +40,8 @@
     "jsdom": "^30.1.2",
     "vite": "^8.3.2",
     "vitest": "^5.0.3"
+  },
+  "overrides": {
+    "compression": "^1.8.2"
   }
 }
