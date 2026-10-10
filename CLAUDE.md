@@ -87,3 +87,9 @@ tooling moved. Remove entries from this list as they are fixed.
     site open for an hour gets "Session expired" even if they never signed in.
 14. **Update page photo overlaps the bird name.** The card image is `position: absolute` in
     `UpdateRemoveComponent`.
+15. **Page CSS leaks across the whole site.** Every stylesheet is bundled globally, and `addPage.css`
+    and `UpdatePage.css` style bare `input[type="text"]` (addPage with `margin-bottom: 15px !important`),
+    so those rules hit text inputs on every page. The login page has to override them. Scope these rules
+    to their page's container, or move to CSS Modules.
+16. **Phone layout of the home page.** The header takes about a quarter of the screen and "REY'S LOFT"
+    wraps onto two very large lines.

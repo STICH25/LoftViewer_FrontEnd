@@ -44,7 +44,6 @@ const LogInPage = ({ onLoginSuccess }) => {
                 {...register("username")}
                 type="text"
                 placeholder="User Name"
-                className="adjust-text"
                 autoComplete="username"
                 required
               />
