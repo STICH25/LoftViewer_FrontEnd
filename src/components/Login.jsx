@@ -1,32 +1,23 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { loginUser } from "../api/auth";
-import { useNavigate } from "react-router-dom";
 import "../assets/css/loginPage.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
+/** Sign-in form. On success it hands the API's user name to `onLoginSuccess`, which stores it and navigates. */
 const LogInPage = ({ onLoginSuccess }) => {
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     try {
-      const response = await loginUser(data);
-      
-      const newUser = "User1"; // Hardcoded for now, should come from API response
-      localStorage.setItem("user", JSON.stringify({ username: newUser, token: response.token }));
-      
+      const { userName } = await loginUser(data);
       reset();
-      navigate("/", { replace: true });
-      
-      if (onLoginSuccess) {
-        onLoginSuccess(newUser);
-      }
+      onLoginSuccess(userName);
     } catch (err) {
       setError(err.message);
     }
-  };  
+  };
 
   return (
     <div className="page-container">

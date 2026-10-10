@@ -8,13 +8,29 @@ import LogInPage from "./pages/LoginPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Header from "./components/Header";
 import useIdleTimeout from "./hooks/useIdleTimeout";
-import { getToken } from "./auth/token";
+import { decodeTokenPayload, getToken } from "./auth/token";
 
 const USER_KEY = "user";
 
+/** The signed-in user's name from the token's `name` claim, or null if there is no readable token. */
+const nameFromToken = (token) => {
+  try {
+    return token ? decodeTokenPayload(token).name ?? null : null;
+  } catch {
+    return null;
+  }
+};
+
 const readStoredUser = () => {
   try {
-    return JSON.parse(localStorage.getItem(USER_KEY) ?? "null");
+    const stored = JSON.parse(localStorage.getItem(USER_KEY) ?? "null");
+    if (!stored) {
+      return null;
+    }
+
+    // The token's name comes from the server. Earlier builds stored a placeholder ("User1") here,
+    // so prefer the token so those sessions show the right name without signing in again.
+    return { ...stored, username: nameFromToken(stored.token) ?? stored.username };
   } catch {
     return null;
   }
@@ -28,16 +44,17 @@ const App = () => {
   useIdleTimeout(setUser);
 
   const handleLoginSuccess = (userName) => {
-    const userData = { username: userName, token: getToken() };
+    const token = getToken();
+    const userData = { username: userName ?? nameFromToken(token), token };
     localStorage.setItem(USER_KEY, JSON.stringify(userData));
     setUser(userData);
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (
     <>
       {location.pathname !== "/login" && (
-        <Header isLoggedIn={!!user} userName={user?.name} onLogout={() => setUser(null)} />
+        <Header isLoggedIn={!!user} userName={user?.username} onLogout={() => setUser(null)} />
       )}
       <Routes>
         <Route path="/" element={<MainPage />} />

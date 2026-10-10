@@ -61,13 +61,11 @@ tooling moved. Remove entries from this list as they are fixed.
 1. **Add/update/delete call the wrong URL.** `addBird`, `updateBird` and `deleteBird` in `src/api/birds.js`
    call `/addBird` and `/{id}` instead of `/api/birds/addBird` and `/api/birds/{id}`, so all three fail
    in production. They are marked `KNOWN BUG`.
-2. **Logged-in name is hard-coded.** `components/Login.jsx` stores the user as `"User1"` instead of the
-   `userName` the API returns, and `Header` reads `user.name` while the stored key is `username`, so it
-   always shows "User".
+2. ~~**Logged-in name is hard-coded.**~~ Fixed: the header shows the API's `userName` (from the token's
+   `name` claim for sessions stored before the fix).
 3. **Logout leaves the user in localStorage.** `LogOut` and the idle timeout clear `token` but not `user`;
    after a refresh the header shows the user as signed in again.
-4. **Login navigates twice.** `Login.jsx` and `App.handleLoginSuccess` both call `navigate("/")` and both
-   write the `user` key.
+4. ~~**Login navigates twice.**~~ Fixed: only `App.handleLoginSuccess` stores the user and navigates.
 5. **`ProtectedRoute` gets the wrong prop.** `App` passes `user={user?.token}` (a string) but the
    component reads `user?.token`; it only works because of the localStorage fallback. It also does not
    check the `Admin` role, so non-admins reach admin pages and get 403s.
