@@ -8,7 +8,8 @@
 
 .search-form-container {
   display: flex;
-  width: 50vw;
+  box-sizing: border-box;
+  width: min(600px, 100%);
   border-radius: 15px;
   padding: 10px;
   align-items: center;
@@ -50,6 +51,7 @@ input[type="text"] {
 
 .full-width-input {
   flex: 1; /* Makes input take the remaining space */
+  min-width: 0; /* a text input's default minimum width would otherwise push the card past the screen */
   padding: 0.5rem;
   height: 5px;
   border: 1px solid #d1d5db;
@@ -130,16 +132,19 @@ h2 {
   margin-top: 5px;
 }
 
+/* Update / Delete buttons. They used to be absolutely positioned 750px down the page, which only
+   lined up with the card on one screen size; in the normal flow they sit right below it. */
 .button-container{
   display: flex;
-  position: absolute;
-  width: 40vw;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 100%;
   border-radius: 15px;
   padding: 5px 5px;
   align-items: center;
-  margin-top: 750px;
-  justify-content: space-evenly; 
-  gap: 5px;
+  margin-top: 10px;
+  justify-content: center;
+  gap: 12px;
 }
 
 .submit-btn {

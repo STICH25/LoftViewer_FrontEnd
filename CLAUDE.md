@@ -53,6 +53,31 @@ public/assets/images/   images referenced by plain string URLs at runtime; must 
   that includes `\n` will silently not match a CRLF file, so check that each replacement applied.
 - Non-secret config only: `VITE_*` variables are inlined into the public bundle.
 
+## Mobile and tablet (iPhone, iPad, Android)
+
+The site must work on touch devices. Rules that every new page and component follows:
+
+- **No hover-only interactions.** Touch screens have no hover. The header menu opens on tap
+  (`Header.jsx` toggles `.is-open`); the `:hover` rule is limited to
+  `@media (hover: hover) and (pointer: fine)` so a tap's sticky hover cannot fight the toggle.
+- **Never `100vw` or `100vh` for a page.** `100vw` includes the scrollbar and `100vh` ignores Safari's
+  collapsing address bar. Use `width: 100%` and `min-height: 100vh; min-height: 100dvh`.
+- **Fluid, not fixed, widths.** Use `min(500px, 100%)`, `clamp()` for type (see `.shadows`), `flex-wrap`,
+  and `aspect-ratio`. A fixed `px` width over ~340px will overflow an iPhone SE.
+- **Inputs are at least 16px on touch screens** (`@media (pointer: coarse)` in `addPage.css`), or iPhone
+  Safari zooms the page when one is focused. Buttons and tappable rows are at least 44px tall.
+- **Safe areas.** `index.html` sets `viewport-fit=cover`; pad edge-to-edge bars with
+  `env(safe-area-inset-*)` (see the header) so the notch does not cover them.
+- **Safari prefixes.** `backdrop-filter` needs `-webkit-backdrop-filter`. Form controls do not inherit
+  the page font in WebKit, so set `font-family` on buttons.
+- **Breakpoint:** `max-width: 768px` is "phone and small tablet". Do not add others without a reason.
+
+**Testing without a Mac or an iPhone:** Playwright's WebKit engine is the same engine as Safari. In a
+scratch folder (not this repo): `npm i playwright && npx playwright install webkit`, then launch
+`webkit` with `devices["iPhone 15"]`, `devices["iPhone SE"]` (320px, the narrowest realistic phone) and
+`devices["iPad (gen 7)"]`, and assert `document.documentElement.scrollWidth <= clientWidth` on every route.
+It is not a substitute for a final check on a real device.
+
 ## Known bugs (deferred to the UI bug pass, October 2026)
 
 Found during modernization and **left unfixed on purpose** so behaviour did not change while the
@@ -89,5 +114,4 @@ tooling moved. Remove entries from this list as they are fixed.
     and `UpdatePage.css` style bare `input[type="text"]` (addPage with `margin-bottom: 15px !important`),
     so those rules hit text inputs on every page. The login page has to override them. Scope these rules
     to their page's container, or move to CSS Modules.
-16. **Phone layout of the home page.** The header takes about a quarter of the screen and "REY'S LOFT"
-    wraps onto two very large lines.
+16. ~~**Phone layout of the home page.**~~ Fixed in the mobile pass: compact 54px header, scaling title.
